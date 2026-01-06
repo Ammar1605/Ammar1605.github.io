@@ -137,7 +137,7 @@
             const slide = document.createElement("div");
             slide.className = "slide" + (index === 0 ? " active" : "");
             slide.innerHTML = `
-                <img src="imgs/${item.image}" alt="">
+                <img src="${item.image}" alt="">
                 <div class="text">${item.text}</div>
                 `;
             slidesContainer.appendChild(slide);
