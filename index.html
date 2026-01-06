@@ -1,19 +1,157 @@
-<DOCTYPE html>
-    <html>
-    <head>
-        <title>CONSTRUCTION</title>
-        <meta charset="utf-8" />
-        <meta lang="ba" />
-        <meta content="Ammar contruction" />
-        <meta author="Ammar" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html lang="en">
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link href="main.css" rel="stylesheet" />
+<head>
+    <meta charset="UTF-8" />
+    <title>One Month With You ❤️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-    </head>
-    <body>
-        <p>UNDER CONSTRUCTION</p>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            background: #0f0f0f;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #0f0f0f;
+            /* filter: brightness(0.55); */
+        }
+
+        /* .text {
+            position: relative;
+            max-width: 700px;
+            padding: 24px;
+            font-size: 1.6rem;
+            line-height: 1.4;
+            text-align: center;
+            animation: fadeUp 1s ease;
+        } */
+         .text {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 800px;
+            padding: 16px 24px;
+            font-size: 1.4rem;
+            line-height: 1.4;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.55);
+            border-radius: 12px;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hint {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="slides"></div>
+    <div class="hint">Click anywhere</div>
+
+    <script>
+        const data = [
+            {
+                image: "img1.jpg",
+                text: "Nisam očekivao puno. <br> A onda sam upoznao tebe"
+            },
+            {
+                image: "img2.jpg",
+                text: 'Ovo je bio početak nečeg prelijepog. ❤️<br> Momenat kada jedna bezznačajna riječ "nešto" dobija sasvim novo značenje.'
+            },
+            {
+                image: "img3.jpg",
+                text: 'Moj "pad" u tvoju "zamku". <br> Negdje između šala i kasnih poruka, prestao sam se praviti da je sve ovo slučajno. '
+            },
+            {
+                image: "img4.jpg",
+                text: 'U tom trenutku sam shvatio da više ne želim to zadržati za sebe. <br> Želio sam da znaš kako se osjećam u vezi tebe.'
+            },
+            {
+                image: "img5.jpg",
+                text: 'Ovo mogu da izdvojim kao jedan od najposebnijih trenutaka. <br> Tvoj odgovor je bio sve što sam mogao poželjeti. ❤️ </br> Tada sam znao da je ovo početak nečeg stvarnog. </br> Nečeg što će trajati.'
+            },
+            {
+                image: "img6.jpg",
+                text: "Znam da je mjesec dana relativno kratko vrijeme, ali za mene je to bilo dovoljno da shvatim koliko si posebna. <br> Svaki trenutak proveden s tobom je bio ispunjen srećom i radošću. <br> Tvoja prisutnost čini moj svijet boljim mjestom. </br> Hvala ti što si dio mog života i što nisi odustala od mene. </br> Radujem se svim budućim trenucima koje ćemo zajedno dijeliti."
+            },
+            {
+                image: "img7.jpg",
+                text: "Iako smo ovako daleko, osjećam tvoju blizinu svakog dana, jer si mi već ušla u srce. ❤️ <br> Jedva čekam dan kada ćemo biti zajedno i moći ću ti reći sve ovo uživo. </br> Do tada, čuvaj mi se i znaj da mislim na tebe svaki trenutak. "
+            }
+        ];
+
+        const slidesContainer = document.getElementById("slides");
+        let current = 0;
+
+        data.forEach((item, index) => {
+            const slide = document.createElement("div");
+            slide.className = "slide" + (index === 0 ? " active" : "");
+            slide.innerHTML = `
+                <img src="imgs/${item.image}" alt="">
+                <div class="text">${item.text}</div>
+                `;
+            slidesContainer.appendChild(slide);
+        });
+
+        const slides = document.querySelectorAll(".slide");
+
+        document.body.addEventListener("click", () => {
+            slides[current].classList.remove("active");
+            current = (current + 1) % slides.length;
+            slides[current].classList.add("active");
+        });
+    </script>
+
 </body>
-    </html>
+
+</html>
